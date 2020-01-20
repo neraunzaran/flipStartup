@@ -10,7 +10,6 @@ PriceSensitivityMeter(
   colors = c("#FF0000", "#FF0000", "#008000", "#008000"),
   line.type = c("dot", "solid", "solid", "dot"),
   line.thickness = c(1, 2, 2, 1),
-  resolution = NULL,
   currency = "$",
   global.font.family = "Arial",
   global.font.color = rgb(44, 44, 44, maxColorValue = 255),

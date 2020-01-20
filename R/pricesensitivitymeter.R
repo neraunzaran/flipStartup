@@ -5,8 +5,6 @@
 #'   At what price would you consider this product/brand to be 
 #'   1) Very cheap, 2) Cheap, 3) Expensive, 4) Very expensive.
 #' @param weights A numeric vector with length equal to the number of rows in \code{x}.
-#' @param resolution Numeric; controls the intervals between which "Proportion of respondents"
-#'    is computed.
 #' @param currency Character; Currency symbol to prepend to the intersection labels. These
 #'   will also be used to set the default prefix to the x tick labels and hovertext.
 #' @param intersection.show Logical; Whether to show labels to the intersection points of the lines.
@@ -36,7 +34,6 @@ PriceSensitivityMeter <- function(x,
                                   colors = c("#FF0000", "#FF0000", "#008000", "#008000"), 
                                   line.type = c("dot", "solid", "solid", "dot"),
                                   line.thickness = c(1, 2, 2, 1),
-                                  resolution = NULL,
                                   currency = "$",
                                   global.font.family = "Arial",
                                   global.font.color = rgb(44, 44, 44, maxColorValue = 255),
@@ -165,7 +162,6 @@ propLessorEqual <- function(vals, pts, wgts)
         }
     }
     res <- cumsum(res)/denom
-    print(res)
 }
 
 # Calculates proportion more than or equal to
@@ -183,11 +179,9 @@ propGreatorEqual <- function(vals, pts, wgts)
     {
         while(j <= length(vals) && vals[ord[j]] >= pts[i])
         {
-            #cat("Comparing", vals[ord[j]], "to", pts[i]
             res[i] <- res[i] + wgts[ord[j]]
             j <- j + 1
         }
     }
     res <- rev(cumsum(res)/denom)
-    print(res)
 }
